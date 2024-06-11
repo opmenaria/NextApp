@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { FaUserSecret } from "react-icons/fa";
+import AsideComp from "./components/Aside";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <nav className=" z-50 fixed top-0 w-full bg-slate-400 h-10 justify-around items-center flex">
+          <FaUserSecret className=" left-6 text-3xl fixed"/>
+        </nav>
+        <AsideComp/>
+        {children}
+        </body>
     </html>
   );
 }
