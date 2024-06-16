@@ -9,18 +9,15 @@ import { BiPlusCircle } from 'react-icons/bi';
 import DumyForm from '../components/Form';
 import { PiNotePencilLight } from 'react-icons/pi';
 import { BsAlarm } from 'react-icons/bs';
-
 interface EventType {
   type: string;
   content: string;
 }
-
 interface calDataType {
   date: string | number;
   events?: EventType[];
   reminder?: boolean;
 }
-
 export default function CalendarPage() {
   const [value, setValue] = useState<Dayjs>(() => dayjs());
   const [selectedValue, setSelectedValue] = useState<Dayjs>(dayjs());
