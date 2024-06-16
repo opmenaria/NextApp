@@ -13,6 +13,7 @@ interface EventType {
   type: string;
   content: string;
 }
+
 interface calDataType {
   date: string | number;
   events?: EventType[];
