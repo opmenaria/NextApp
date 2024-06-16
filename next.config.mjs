@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: '/NextApp',
-    assetPrefix: '/NextApp/',
+    output: 'export',
+    basePath: '/<your-repo-name>',
+    assetPrefix: '/<your-repo-name>/',
 };
 
 export default nextConfig;
