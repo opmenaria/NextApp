@@ -5,38 +5,48 @@ const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-interface DataType {
-    id:number,
-    donor: string,
-    panels: string[],
-    barcode: number,
-    sourceData: string,
-    date: string,
-    amount: number,
-    observedBy: string,
-    status: string
+interface tabDataType {
+    id: number;
+    donor: string;
+    panels: string[];
+    barcode: number;
+    sourceData: string;
+    date: string;
+    amount: number;
+    observedBy: string;
+    status: string;
   }
-  interface formData {
-    columns: any[];
-    rowRef:object
-    onSubmit:(res:object)=>{}
+  interface EventType {
+    type: string;
+    content: string;
   }
-  function DumyForm({columns, onSubmit, rowRef}:formData){
-  
+  interface calDataType {
+    date: string | number;
+    events: EventType[];
+    reminder?: boolean;
+  }
+  interface FormData {
+    columns: any; 
+    rowRef: React.MutableRefObject<any>; 
+    onSubmit: (respons: { type: any; content: any } | any) => void; 
+  }
+  const DumyForm= ({ columns, onSubmit, rowRef }:FormData) => {
   return (
   <Form
-    
+
     {...layout}
     name="nest-messages"
-    onFinish={(respons)=>onSubmit(respons)}
+    onFinish={(respons: any) => onSubmit(respons)}
     style={{ maxWidth: 800, marginTop:30 }}
-    initialValues={rowRef?.current || {}}
+    initialValues={rowRef.current || {}}
   >
-    {columns?.map((column:DataType) =>{
-        return <Form.Item key={column.key} name={column.key} label={column.title} rules={column.rules}>
+    {columns?.map((column: any) =>{
+      const tabOptions=['Unable',"Refused", 'Duplicate', 'Insufficient', 'Approved']
+      const calOptions=['success','warning', 'error']
+      return <Form.Item key={column.key} name={column.key} label={column.title} >
           {column.key=='panels'?
-          <Select mode="tags" style={{ width: '100%' }} tokenSeparators={[',']} defaultValue={rowRef?.current?.[column.key]}>
-          {column?.options?.map((item: string) => (
+          <Select mode="tags" style={{ width: '100%' }} tokenSeparators={[',']} >
+          {tabOptions?.map((item: string) => (
             <Select.Option key={item} value={item}>
               {item}
             </Select.Option>
@@ -53,10 +63,10 @@ interface DataType {
               </Space>
             </>
           )}
-          options={column.options.map((item) => ({ label: item, value: item }))}
+          options={(calOptions).map((item:string) => ({ label: item, value: item }))}
         />
           :<Input />}
-          
+
         </Form.Item>
     })}
     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
