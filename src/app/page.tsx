@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,12 +9,18 @@ export default function Home() {
        
         </div>
      <div className=' flex mt-12 flex-col  w-full items-center  p-1 rounded-md'>
-             <div style={{width:'60'}} className=" border text-center  bg-slate-300 border-gray-100 rounded-lg">
-            <p style={{width:'95%'}} className=' text-blue-400 my-3 ml-5 text-lg '>This project is having two routes for a Table with CRUD operations 
-              and a Calendar with add event and add reminder options </p>
-            <p className=' w-full my-3 ml-5 text-sm'>OM PRAKASH MENARIA </p>
-            <p className=' w-full my-3 ml-5 text-sm'>React Js/ Next Js Deveoper </p>
-            <p className=' w-full my-3 ml-5 text-sm'>Udaipur Rajasthan </p>
+             <div style={{width:'60'}} className=" border text-center  bg-white border-gray-100 rounded-lg">
+             <p style={{ width: '95%' }} className='text-blue-400 my-3 ml-5 text-2xl'>
+                {`This project has two routes: a `}
+                <Link className={`text-yellow-500  hover:text-gray-700`} href={'/tablepag'}>Table</Link>
+                {` with CRUD operations and a `}
+                <Link className={`text-red-500  hover:text-gray-700`} href={'/tablepag'}>Calendar</Link>
+                {` with add event and add reminder options`}
+              </p>
+
+            <p className=' w-full my-3 ml-5 text-lg'>OM PRAKASH MENARIA </p>
+            <p className=' w-full my-3 ml-5 text-lg'>React Js/ Next Js Deveoper </p>
+            <p className=' w-full my-3 ml-5 text-lg'>Udaipur Rajasthan </p>
               </div>
        
         </div>

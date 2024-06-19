@@ -173,7 +173,7 @@ export default function CalendarPage() {
       <div className='flex justify-between items-center mb-6 bg-sky-400 p-1 rounded-md'>
         <p className='ml-5 text-2xl'>Calendar</p>
         <div className='flex items-center gap-2'>
-            <Button type='primary' onClick={()=>onSelect(dayjs())}>
+            <Button style={{background:'white'}}  onClick={()=>onSelect(dayjs())}>
                 Today
             </Button>
         <Alert className=' text-green-700 font-bold' message={`Selected date: ${selectedValue?.format('YYYY-MM-DD')}`} />

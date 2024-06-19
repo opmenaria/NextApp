@@ -69,8 +69,8 @@ interface tabDataType {
 
         </Form.Item>
     })}
-    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-      <Button type="primary" htmlType="submit">
+    <Form.Item  wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+      <Button style={{borderColor:'blue', color:'blue', width:'50%'}} type='primary' htmlType="submit">
         Submit
       </Button>
     </Form.Item>

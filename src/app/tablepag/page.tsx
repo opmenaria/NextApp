@@ -139,7 +139,7 @@ const columns: TableProps<tablDataType>['columns'] = [
       <div className="flex justify-between items-center mb-6 bg-sky-400 p-1 rounded-md">
         <p className="ml-5 text-2xl">Users Table </p>
         <div>
-          <Button onClick={() => setOpnModl(true)} icon={<BiPlusCircle size={20} color="blue" />}>
+          <Button style={{background:'white'}} type='default' onClick={() => setOpnModl(true)} icon={<BiPlusCircle size={20} />}>
             Add Row
           </Button>
         </div>

@@ -27,12 +27,12 @@ export default function AsideComp() {
     }, []);
   return (
       <aside ref={sideRef} className=" h-screen fixed left-0 flex justify-center min-h-screen z-50" >
-         <div className=' z-40 top-0  p-1 w-12 bg-gray-800 min-h-screen'>
+         <div className=' z-40 top-0  p-2 w-12 bg-gray-800 min-h-screen'>
             {
                 sideDir==='right'?
-                <FaChevronRight className=' cursor-pointer hover:bg-cyan-300 p-1 size-8 rounded-full' onClick={()=>setSideDir('left')} color="white"/>
+                <FaChevronRight size={32} className=' cursor-pointer hover:bg-cyan-300 p-1 size-8 rounded-full' onClick={()=>setSideDir('left')} color="white"/>
                 :
-                <FaChevronLeft className=' cursor-pointer hover:bg-cyan-300 p-1 size-8 rounded-full' onClick={()=>setSideDir('right')} color="white"/>
+                <FaChevronLeft size={32} className=' cursor-pointer hover:bg-cyan-300 p-1 size-8 rounded-full' onClick={()=>setSideDir('right')} color="white"/>
             }
          <div className=' items-center flex flex-col mt-3 gap-8'>
                 <Link className=" text-gray-50 " href={'/'}><IoHome color={`${pathname=='/'?'blue':'white'}`} className=' cursor-pointer' size={22}/></Link>
