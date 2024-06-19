@@ -77,22 +77,39 @@ export default function CalendarPage() {
     setValue(newValue);
   };
 
-  const addReminder = (hasReminder: boolean | undefined) => {
-    const currentDate = value.date().toString();
-    const newData = data.map((item) => {
-      if (item.date == currentDate) {
-        return { ...item, reminder: !hasReminder };
-      }
-      return item;
-    });
+  const addReminder = (hasReminder: boolean | undefined, currentItem: calDataType | undefined) => {
+    const currentDate = value.date();
+    let newData;  
+    if (currentItem === undefined) {
+      newData = [...data, { reminder: true, date: Number(currentDate), events: [] }];
+    } else if (hasReminder === undefined) {
+      newData = data.map((item) => {
+        if (item.date == currentDate) {
+          return { ...item, reminder: true };
+        }
+        return item;
+      });
+    } else {
+      newData = data.map((item) => {
+        if (item.date == currentDate) {
+          return { ...item, reminder: !hasReminder };
+        }
+        return item;
+      });
+    }
+  
     setData(newData);
     setOpenModal(false);
     rowRef.current = null;
   };
-
+  
   const popContent = () => {
-    const currentDate = value.date().toString();
-    const hasReminder = data.find((el) => el.date == currentDate)?.reminder;
+    const currentDate = value.date();
+    const currentItem = data.find((el) => el.date == currentDate);
+    const hasReminder = currentItem?.reminder;
+  
+    console.log("hasReminder", hasReminder);
+  
     return (
       <>
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setOpenModal(true)}>
@@ -101,9 +118,15 @@ export default function CalendarPage() {
         <Popconfirm
           title="Reminder"
           description={`Want to ${hasReminder ? 'remove' : 'add'} reminder?`}
-          onConfirm={() => addReminder(hasReminder)}
+          onConfirm={() => addReminder(hasReminder, currentItem)}
           okText="Yes"
           cancelText="No"
+          okButtonProps={{
+            style: {
+              color: 'black',
+              borderColor: 'gray',
+            },
+          }}
           className='flex items-center gap-2 cursor-pointer mt-2'
         >
           <BsAlarm color='blue' size={18} /> {hasReminder ? 'Remove Reminder' : 'Add Reminder'}
